@@ -1,56 +1,40 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
 import './App.css';
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+import Skrining from './pages/Beranda';
+import Login from './components/Login';
+import User from './pages/User';
+import Penyakit from './pages/Penyakit/Penyakit';
+import Rekam from './pages/Rekam';
+import Aturan from './pages/Aturan';
+import Gejala from './pages/Gejala';
+import Pasien from './pages/Pasien';
+import Register from './components/Register';
+import SkriningPage from './pages/skrining/SkriningPage';
+import EditPenyakit from './pages/Penyakit/EditPenyakit';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Skrining/>}/>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/register" element={<Register/>}/>
+          <Route path="/users" element={<User/>}/>
+          <Route path="/penyakits" element={<Penyakit/>}/>
+          <Route path="/rekams" element={<Rekam/>}/>
+          <Route path="/gejalas" element={<Gejala/>}/>
+          <Route path="/aturans" element={<Aturan/>}/>
+          <Route path="/pasiens" element={<Pasien/>}/>
+          <Route path="/skrinings" element={<SkriningPage/>}/>
+          <Route path="/penyakits/edit/:id" element={<EditPenyakit/>}/>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
