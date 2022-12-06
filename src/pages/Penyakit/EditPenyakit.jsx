@@ -1,7 +1,7 @@
 import {React, useEffect, useState}from 'react';
 import Layout from '../Layout';
 import { useDispatch,useSelector } from "react-redux";
-import { useNavigate, useParams} from 'react-router-dom';
+import { Link, useNavigate, useParams} from 'react-router-dom';
 import { getMe } from '../../features/authSlice';
 import axios from 'axios';
 
@@ -63,6 +63,7 @@ const EditPenyakit = () => {
     <div>
         <Layout/>
         <div className="container mx-auto lg:w-1/3 shadow-xl rounded-box p-10">
+        <Link to="/penyakits" className=" my-7 btn-link text-indigo-500">Kembali</Link>
         <form onSubmit={updatePenyakit}>
                 <p>{message}</p>
                 <h3 className="rounded-box bg-primary py-3 text-center mt-3 font-bold text-lg text-white mb-3">Edit Data Penyakit</h3>
@@ -72,14 +73,6 @@ const EditPenyakit = () => {
                 </label>
                 <input type="text" placeholder="Abortus" value={name} onChange={(e)=>setName(e.target.value)} className="input input-bordered w-full max-w-xs" />
                 </div>
-                <label className="label">
-                    <span className="label-text">Tingkat</span>
-                </label>
-                <select className="select select-bordered w-full max-w-xs">
-                    <option>Awas</option>
-                    <option>Normal</option>
-                    <option>Bahaya</option>
-                </select>
                 <div className="divider"></div>
                 <label className="label">
                     <span className="label-text">Keterangan</span>

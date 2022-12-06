@@ -1,23 +1,26 @@
 import React from 'react'
-import TambahPenyakit from '../../components/Penyakit/TambahPenyakit'
+import { Page, Text, View, Document, StyleSheet, PDFDownloadLink} from '@react-pdf/renderer';
+import PDFfile from '../../components/PDFfile';
 
 const AddPenyakit = () => {
+  const styles = StyleSheet.create({
+    page: {
+      flexDirection: 'row',
+      backgroundColor: '#E4E4E4'
+    },
+    section: {
+      margin: 10,
+      padding: 10,
+      flexGrow: 1
+    }
+  });
   return (
     <div>
-        {/* The button to open modal */}
-        <label htmlFor="my-modal-6" className="btn btn-primary">Tambah</label>
-
-        {/* Put this part before </body> tag */}
-        <input type="checkbox" id="my-modal-6" className="modal-toggle" />
-        <div className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box">
-            <h3 className="font-bold text-lg">Congratulations random Internet user!</h3>
-            <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
-            <div className="modal-action">
-            <label htmlFor="my-modal-6" className="btn">Yay!</label>
-            </div>
-        </div>
-        </div>
+      <PDFfile/>
+      <br />
+      <PDFDownloadLink document={<PDFfile/>} fileName="FORM">
+        {({loading})=>(loading ? <button>Loading document...</button> : <button>Download</button>)}
+      </PDFDownloadLink>
     </div>
   )
 }

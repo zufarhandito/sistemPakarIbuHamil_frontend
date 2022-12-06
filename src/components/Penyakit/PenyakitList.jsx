@@ -13,12 +13,14 @@ const PenyakitList = () => {
     const savePenyakit = async(e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:5000/penyakit',{
+            const response = await axios.post('http://localhost:5000/penyakit',{
                 name: name,
                 keterangan: keterangan,
                 solusi: solusi
             });
+            setMessage(response.data.message)
             getPenyakit();
+            navigate("/penyakits");
         } catch (error) {
             if(error.response){
                 setMessage(error.response.data.message);
@@ -42,8 +44,45 @@ const PenyakitList = () => {
 
   return (
     <div className="container mx-auto mt-10">
-            <div className="w-full overflow-auto shadow-xl rounded-box">
-                <table className="table shadow-md w-full">
+        <div className="sm:flex h-full">
+            <div className="w-full overflow-auto shadow-xl p-7 rounded-box">
+                <label htmlFor="my-modal-3" className="btn btn-primary my-7">Tambah Data</label>
+                {/* The button to open modal */}
+
+                {/* Put this part before </body> tag */}
+                <input type="checkbox" id="my-modal-3" className="modal-toggle" />
+                <div className="modal">
+                <div className="modal-box relative">
+                    <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <form onSubmit={savePenyakit} method="post">
+                            {message && 
+                            <div className="alert alert-success shadow-lg">
+                                <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                <span>{message}</span>
+                                </div>
+                            </div>}
+                        <div className="form-control w-full max-w-xs">
+                        <label className="label">
+                            <span className="label-text">Nama Penyakit</span>
+                        </label>
+                        <input required type="text" value={name} onChange={(e)=>setName(e.target.value)} placeholder="Abortus" className="input input-bordered w-full max-w-xs" />
+                        </div>
+                        <div className="divider"></div>
+                        <label className="label">
+                            <span className="label-text">Deskripsi</span>
+                        </label>
+                        <textarea value={keterangan} onChange={(e)=>setketerangan(e.target.value)} className="textarea textarea-bordered w-full h-40" placeholder="Abortus adalah..."></textarea>
+                        <label className="label">
+                            <span className="label-text">Solusi</span>
+                        </label>
+                        <textarea value={solusi} onChange={(e)=>setSolusi(e.target.value)} className="textarea textarea-bordered w-full h-30" placeholder="Segera bawa ke faskes terdekat"></textarea>
+                        <button htmlFor="my-modal-3" type="submit" className="btn btn-blue w-full ">submit</button>
+                    </form>
+                </div>
+                </div>
+
+                <table className="table w-full">
                 <thead>
                 <tr>
                     <th>No</th>
@@ -60,7 +99,6 @@ const PenyakitList = () => {
                         <td>
                             <div>
                                 <div className="font-bold">{p.name}</div>
-                                <div className="text-sm opacity-50">Bahaya</div>
                             </div>
 
                         </td>
@@ -89,7 +127,8 @@ const PenyakitList = () => {
                 </tr>
                 </tfoot>
                 
-                </table>    
+                </table>
+            </div>
         </div>
     </div>
   )

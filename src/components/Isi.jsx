@@ -7,56 +7,39 @@ const Isi = () => {
     const {user} = useSelector((state) => state.auth);
   return (
     <div className="container mx-auto py-10">
+        <div className="hero lg:h-96 bg-base-200 rounded-box">
+        <div className="hero-content  flex-col lg:flex-row-reverse">
+            <img src="https://www.astronauts.id/blog/wp-content/uploads/2022/07/Tips-Sehat-Ibu-Hamil-Muda-Agar-Janin-Tidak-Keguguran-1024x683.jpg" className="rounded-lg shadow-2xl lg:h-80" />
+            <div>
+            <h1 className="text-5xl font-bold">Puskesmas Ngemplak 1</h1>
+            <p className="py-6">Sistem Deteksi Dini Masalah Kesehatan pada Ibu Hamil, sebagai aplikasi pemeriksaan ibu hamil secara online dan mandiri dari rumah!</p>
+            <NavLink to="/skrinings" className="btn btn-primary">Mulai <span className="italic ml-1.5">Screening</span></NavLink>
+            </div>
+        </div>
+        </div>
         <div className="flex flex-col w-full">
-            <div className="sm:flex h-20 my-3 bg-base-300 rounded-box">
-                <div className="flex-auto my-auto ml-5 font-semibold">Selamat datang, {user && user.firstName}!</div>
-                <NavLink to="/skrinings" className="w-10/12 mx-auto my-auto lg:w-1/4 btn btn-wide btn-primary mr-5">Mulai Skrining</NavLink>
-            </div> 
             {/* <div className="divider"></div>  */}
-            <div className="sm:flex">
-                <div className="lg:w-3/4 my-3 ">
-                <div className="card w-full bg-base-100 image-full">
-                    <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
-                    <div className="card-body">
-                        <h2 className="card-title">Pelayanan Ibu Hamil</h2>
-                        <p>Puskesmas Ngemplak 1</p>
-                    </div>
-                </div>
-                <div className="stats my-5 shadow-md w-full">
-                    <div className="stat place-items-center">
-                        <div className="stat-title">Pasien</div>
-                        <div className="stat-value">104</div>
-                    </div>
-                    <div className="stat place-items-center">
-                        <div className="stat-title">Bidan</div>
-                        <div className="stat-value text-secondary">12</div>
-                    </div>
-                    <div className="stat place-items-center">
-                        <div className="stat-title">Dokter</div>
-                        <div className="stat-value">8</div>
-                    </div>
-                </div>
-                <div className="card w-full bg-base-300 rounded-box">
-                        <div className="card-body">
-                        <p>Petunjuk Penggunaan</p>
-                        <ul className="list-disc ml-5">
-                            <li className="mb-2">Untuk memulai diagnosis gangguan kesehatan pada ibu hamil,tekan Mulai Diagnosis di pojok kanan atas</li>
-                            <li className="mb-2">Apabila gejala tidak terdaftar, anda dapat menambahkannya di tab Gejala</li>
-                            <li className="mb-2">Anda juga dapat menambahkan jenis penyakit baru di tab Panyakit</li>
-                            <li className="mb-2">Masukkan berbagai gejala yang dialami oleh ibu hamil beserta nilai / tingkatan keyakinan setiap gejala</li>
+            <div className="sm:flex my-3">
+                <div className="lg:w-3/4 bg-base-300 rounded-box ">
+                    <div className="w-full my-10 h-full">
+                            <div className="ml-16">
+                            <p className="font-bold mb-5">Petunjuk Penggunaan</p>
+                            <ul className="list-disc ml-5">
+                                <li className="mb-2">Untuk memulai <span className="italic">screening</span> kesehatan ibu hamil,tekan <span className="font-bold text-primary"> Mulai Screening</span> di atas</li>
+                                <li className="mb-2">Mulai dengan memilih gejala yang anda alami dibagian kiri layar</li>
+                                <li className="mb-2">Hasil <span className="italic">screening</span> anda akan terlihat di bagian kanan layar</li>
+                                <li className="mb-2">Informasi mengenai penyakit / gangguan dengan persentase terbesar dapat dilihat di layar kanan bawah</li>
+                                <li className="mb-2">Untuk menyimpan dan melihat detail informasi <span className="italic">screening,</span> anda harus <span className="italic">Log-In</span> dipojok kanan bawah </li>
                                 <ul className="list-disc ml-5">
-                                    <li className="mb-2">Gejala dan Penyakit terhubung melalui aturan-aturan yang telah ditetapkan</li>
-                                    <li className="mb-2">Untuk menambahkan aturan, masuk ke tab Aturan</li>
+                                    <li className="mb-2">Menyimpan informasi <span>screening</span> dapat berguna untuk mempermudah kunjungan ke Puskesmas Ngemplak 1</li>
                                 </ul>
-                            <li className="mb-2">Selanjutnya tekan Mulai untuk mendiagnosis gangguan kesehatan</li>
-                            <li className="mb-2">Hasil prediksi penyakit akan ditampilkan beserta keterangan dan solusi penyakit </li>
-                        </ul>
+                            </ul>
+                        </div>
                     </div>
-                </div>
                 </div>
                 <div className="divider divider-horizontal"></div>
-                <div className="lg:w-1/4 my-3 h-fit card bg-base-300 rounded-box place-items-center">
-                    <Chat/>
+                <div className="lg:w-1/4">
+                <Chat/>
                 </div>
             </div>
         </div>
