@@ -61,7 +61,7 @@ const SkriningPage = () => {
   const MyDoc = () => (
     <Document>
     <Page size="A4" style={styles.page}>
-      <Image style={styles.headerImage} src="header.jpg"></Image>
+      {/* <Image style={styles.headerImage} src="header.jpg"></Image> */}
       <Text style={styles.title}>Hasil Screening Ibu Hamil</Text>
       <Text style={styles.subtitle}>Tanggal : {datee.toLocaleDateString()}</Text>
       <View style={styles.container}>
@@ -278,7 +278,7 @@ const SkriningPage = () => {
                   {user ?                   
                     <div className="modal-box max-w-none max-h-screen w-3/4">
                       <div className="container overflow-y-auto mx-auto p-6">
-                          <img src="header.jpg" alt="puskesmas_ngemplak1_header" className="mx-auto h-auto lg:w-3/4" />
+                          {/* <img src="header.jpg" alt="puskesmas_ngemplak1_header" className="mx-auto h-auto lg:w-3/4" /> */}
                           <h3 className="font-bold text-lg text-center text-2xl mt-10">Laporan Hasil <span className="italic">Screening</span> Ibu Hamil</h3>
                           <p className="text-center">Hasil <span className="italic">Screening</span> Ibu {user.firstName}</p>
                           <p className="text-center mb-7">Tanggal {datee.toLocaleDateString()}</p>

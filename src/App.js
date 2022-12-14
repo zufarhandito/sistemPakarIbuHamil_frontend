@@ -18,8 +18,15 @@ import EditUser from './pages/User/EditUser';
 import EditGejala from './pages/EditGejala';
 import FormTambahAturan from './pages/aturan/FormTambahAturan';
 import DetailsAturan from './pages/aturan/DetailsAturan';
-import AddPenyakit from './pages/Penyakit/AddPenyakit';
 import Profile from './pages/Profile';
+import Bantuan from './pages/Bantuan';
+import Feedback from './pages/Feedback';
+import Article from './pages/artikel/Article';
+import EditArticle from './pages/artikel/EditArticle';
+import Category from './pages/artikel/Category';
+import EditCategory from './pages/artikel/EditCategory';
+import SemuaArtikel from './pages/artikel/SemuaArtikel';
+import DetailArtikel from './pages/artikel/DetailArtikel';
 
 function App() {
   return (
@@ -30,8 +37,17 @@ function App() {
           <Route path="/login" element={<Login/>}/>
           <Route path="/register" element={<Register/>}/>
           <Route path="/users" element={<User/>}/>
+          <Route path="/bantuan" element={<Bantuan/>}/>
           <Route path="/profile" element={<Profile/>}/>
+          <Route path="/feedback" element={<Feedback/>}/>
           <Route path="/penyakits" element={<Penyakit/>}/>
+          <Route path="/artikel" element={<Article/>}/>
+          <Route path="/articles" element={<SemuaArtikel/>}/>
+          <Route path="/artikel/edit/:id" element={<EditArticle/>}/>
+          <Route path="/artikel/:id" element={<DetailArtikel/>}/>
+          <Route path="/category" element={<Category/>}/>
+          <Route path="/category/edit/:id" element={<EditCategory/>}/>
+          
           <Route path="/gejalas" element={<Gejala/>}/>
           <Route path="/aturans" element={<Aturan/>}/>
           <Route path="/aturans/tambah" element={<FormTambahAturan/>}/>
@@ -40,17 +56,10 @@ function App() {
           <Route path="/penyakits/edit/:id" element={<EditPenyakit/>}/>
           <Route path="/users/edit/:id" element={<EditUser/>}/>
           <Route path="/gejalas/edit/:id" element={<EditGejala/>}/>
-          <Route path="/nganu" element={<AddPenyakit/>}/>
         </Routes>
       </BrowserRouter>
-      {/* <PDFViewer>
-        <AddPenyakit/>
-      </PDFViewer> */}
     </div>
   );
 }
-// ReactDOM.render(<App />, document.getElementById('root'));
-// ReactPDF.render(<AddPenyakit />, `${__dirname}/example.pdf`);
-// ReactPDF.renderToStream(<AddPenyakit />);
 
 export default App;

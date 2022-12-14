@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import Layout from './Layout';
 import Isi from '../components/Isi';
-
+import Footer from '../components/Footer';
 
 const Skrining = () => {
 
@@ -11,6 +11,7 @@ const Skrining = () => {
         <Layout>
         </Layout>
             <Isi/>
+            <Footer/>
     </div>
   )
 }

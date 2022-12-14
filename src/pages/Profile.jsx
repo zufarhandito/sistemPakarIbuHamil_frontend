@@ -236,7 +236,6 @@ const Profile = () => {
             </form>  
         </div>
     </div>
-
   )
 }
 

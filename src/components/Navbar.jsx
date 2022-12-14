@@ -4,7 +4,6 @@ import {useDispatch,useSelector} from 'react-redux';
 import { useNavigate,Link } from 'react-router-dom';
 import { LogOut,reset } from '../features/authSlice';
 import { getMe } from '../features/authSlice';
-import { useState } from 'react';
 
 const Navbar = () => {
     const dispatch = useDispatch();
@@ -43,9 +42,11 @@ const Navbar = () => {
                     <li><NavLink to="/aturans">Aturan</NavLink></li>
                 </ul>
                 </li>
+                <li><NavLink to="/bantuan">Bantuan</NavLink></li>
+                <li><NavLink to="/feedback">Feedback</NavLink></li>
             </ul>
             </div>
-            <NavLink to="/" className="btn btn-ghost normal-case text-xl">Puskesmas</NavLink>
+            <NavLink to="/" className="btn btn-ghost normal-case text-xl">Si_kamil</NavLink>
         </div>
         <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal p-0">
@@ -72,6 +73,19 @@ const Navbar = () => {
             </div>
         }
         </div>
+        <div className="dropdown dropdown-bottom ">
+        {user && user.role === "admin" && 
+            <div>
+            <a tabIndex={0} className="btn btn-ghost font-normal normal-case text-base">Artikel <svg className="fill-current ml-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg></a>
+            <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-fit ">
+                <li><NavLink to="/artikel">Artikel</NavLink></li>
+                <li><NavLink to="/category">Kategori</NavLink></li>
+            </ul>
+            </div>
+        }
+        </div>
+                <li><NavLink to="/bantuan">Bantuan</NavLink></li>
+                <li><NavLink to="/feedback">Feedback</NavLink></li>
             </ul>
         </div>
 
