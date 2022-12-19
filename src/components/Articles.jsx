@@ -21,7 +21,7 @@ const Articles = () => {
             articles.map((a,i)=>(
                 <Link to={`/artikel/${a.uuid}`}>
                 <div className="mx-2 card w-80 shadow-xl h-96 transition ease-in-out delay-150 bg-base-100  hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 hover:text-white duration-300">
-                    <figure><img src={a.image} alt="Shoes" className="h-56 w-auto"/></figure>
+                    <figure><img src={a.image} alt="Shoes" className="h-56"/></figure>
                     <div className="flex card-body">
                         <h2 className="card-title">
                         {a.title}
@@ -33,7 +33,7 @@ const Articles = () => {
                     </div>
                 </div>
                 </Link>
-            )).slice(0,4)
+            )).slice(0,3)
         }
     </div>
     <div className="flex justify-end">

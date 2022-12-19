@@ -44,7 +44,7 @@ const SemuaArtikel = () => {
                     articles.map((a,i)=>(
                         <Link to={`/artikel/${a.uuid}`}>
                         <div className="mx-2 my-2 card w-80 bg-base-100 shadow-xl h-80 transition ease-in-out delay-150 bg-base-100  hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 hover:text-white duration-300">
-                        <figure><img src={a.image} alt="Shoes" className="h-56 w-auto"/></figure>
+                        <figure><img src={a.image} alt="Shoes" className="h-56"/></figure>
                         <div className="flex card-body">
                             <h2 className="card-title">
                             {a.title}

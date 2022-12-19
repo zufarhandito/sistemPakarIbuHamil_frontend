@@ -146,8 +146,8 @@ const KelolaArtikel = () => {
                                         <img src={a.image} alt="Avatar Tailwind CSS Component" />
                                     </div>
                                     </div>
-                                    <div>
-                                    <div className="font-bold">{a.title}</div>
+                                    <div className="w-44">
+                                    <div className="font-bold truncate">{a.title}</div>
                                     </div>
                                 </div>
                             </td>

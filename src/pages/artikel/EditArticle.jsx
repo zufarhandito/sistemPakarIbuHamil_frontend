@@ -11,6 +11,7 @@ const EditArticle = () => {
     const {id} = useParams();
     const [message,setMessage] = useState("");
     const navigate = useNavigate();
+    const [caption,setCaption] = useState("");
     const [articleCategoryId,setArticleCategoryId] = useState("");
 
     useEffect(()=>{
@@ -20,6 +21,7 @@ const EditArticle = () => {
             const response = await axios.get(`http://localhost:5000/article/${id}`);
             setTitle(response.data.data.title);
             setContent(response.data.data.content);
+            setCaption(response.data.data.caption);
             setImage(response.data.data.image);
           } catch (error) {
             if(error.response){
@@ -42,6 +44,7 @@ const EditArticle = () => {
                 image:image,
                 title:title,
                 articleCategoryId:articleCategoryId,
+                caption:caption,
                 content:content
             });
             navigate("/artikel")
@@ -78,6 +81,10 @@ const EditArticle = () => {
                             <option key={a.id} value={a.id}>{a.name}</option>
                         ))}
                     </select>
+                    <label className="label">
+                                <span className="label-text">Caption</span>
+                            </label>
+                            <textarea className="textarea textarea-bordered w-full h-32" placeholder="Bio" value={caption} onChange={(e)=>setCaption(e.target.value)} required></textarea>
                     <label className="label">
                         <span className="label-text">Konten</span>
                     </label>

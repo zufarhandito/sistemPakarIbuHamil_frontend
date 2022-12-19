@@ -249,7 +249,7 @@ const SkriningPage = () => {
                     </td>
                     <td>{a.cfPercentage.toFixed(2)} %</td>
                   </tr>
-                  )).slice(0,3)}
+                  )).slice(0,2)}
                 </tbody>
               </table>
             </div>
