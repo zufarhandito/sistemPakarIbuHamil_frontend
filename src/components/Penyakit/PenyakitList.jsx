@@ -8,6 +8,7 @@ const PenyakitList = () => {
     const [keterangan,setketerangan] = useState("");
     const [solusi,setSolusi] = useState("");
     const [message,setMessage] = useState("");
+    const [filter,setFilter] = useState("")
     const navigate = useNavigate();
 
     const savePenyakit = async(e) => {
@@ -46,10 +47,17 @@ const PenyakitList = () => {
     <div className="container mx-auto mt-10">
         <div className="sm:flex h-full">
             <div className="w-full overflow-auto shadow-xl p-7 rounded-box">
-                <label htmlFor="my-modal-3" className="btn btn-primary my-7">Tambah Data</label>
-                {/* The button to open modal */}
-
-                {/* Put this part before </body> tag */}
+            <div className=" flex w-full justify-between">
+                <label htmlFor="my-modal-3" className="shadow-xl btn btn-primary my-7">Tambah Data</label>
+                <div className="form-control justify-center">
+                <div className="input-group">
+                    <input type="text" placeholder="Search…" onChange={(e)=>setFilter(e.target.value)} className="input input-bordered" />
+                    <button className="btn btn-square">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                    </button>
+                </div>
+                </div>
+            </div>
                 <input type="checkbox" id="my-modal-3" className="modal-toggle" />
                 <div className="modal">
                 <div className="modal-box relative">
@@ -93,7 +101,7 @@ const PenyakitList = () => {
                 </tr>
                 </thead>
                 <tbody>
-                {penyakits.map((p,index)=>(
+                {penyakits.filter(penyakit=>penyakit.name.toLowerCase().includes(filter.toLowerCase())).map((p,index)=>(
                     <tr key={p.uuid}>
                         <td>{index+1}</td>
                         <td>

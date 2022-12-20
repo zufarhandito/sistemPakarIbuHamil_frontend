@@ -16,8 +16,7 @@ const SkriningPage = () => {
   const input = [];
   const [message,setMessage] = useState("");
   const navigate = useNavigate()
-  const [tanggal,setTanggal] = useState("")
-  console.log(gejalaInfo)
+  const [filter,setFilter] = useState("")
 
   const datee = new Date();
 
@@ -171,6 +170,14 @@ const SkriningPage = () => {
             <div className="btn btn-primary w-full mb-8">Masukkan gejala / gangguan yang dialami</div>
           <div className="overflow-y-auto">
             <div className=" w-full shadow-lg ">
+                <div className="form-control justify-center">
+                  <div className="input-group">
+                      <input type="text" placeholder="Search…" onChange={(e)=>setFilter(e.target.value)} className="input input-bordered w-full mb-5" />
+                      <button className="btn btn-square">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                      </button>
+                  </div>
+                </div>
               <table className="table mx-auto">
                 <thead>
                   <tr>
@@ -180,43 +187,41 @@ const SkriningPage = () => {
                   </tr>
                 </thead>
                 <tbody>
-                {gejalaa.map((item,i) => {
-                    return (
-                      <tr>
-                        <td>{i +1}</td>
-                        <td>
-                          <div key={item.id} className="form-control">
-                              <span>{item.name}</span> 
-                          </div>
-                        </td>
-                        <td>
-                        <input
-                              onChange={(e) => {
-                                  // add to list
-                                  if (e.target.checked) {
-                                  setGejalaInfo([
-                                      ...gejalaInfo,
-                                      {
-                                      id: item.id,
-                                      first: item.name,
-                                      },
-                                  ]);
-                                  } else {
-                                  // remove from list
-                                  setGejalaInfo(
-                                      gejalaInfo.filter((people) => people.id !== item.id),
-                                  );
-                                  
-                                  }
-                              }}
-                              value={gejalaInfo}
-                              type="checkbox"
-                              className="checkbox checkbox-primary"
-                              />
-                        </td>
-                      </tr>
-                    );
-                  })}
+                {gejalaa.filter(name=>name.name.toLowerCase().includes(filter.toLowerCase())).map((item,i)=>(
+                  <tr>
+                    <td>{i +1}</td>
+                    <td>
+                      <div key={item.id} className="form-control">
+                          <span>{item.name}</span> 
+                      </div>
+                    </td>
+                    <td>
+                    <input
+                          onChange={(e) => {
+                              // add to list
+                              if (e.target.checked) {
+                              setGejalaInfo([
+                                  ...gejalaInfo,
+                                  {
+                                  id: item.id,
+                                  first: item.name,
+                                  },
+                              ]);
+                              } else {
+                              // remove from list
+                              setGejalaInfo(
+                                  gejalaInfo.filter((people) => people.id !== item.id),
+                              );
+                              
+                              }
+                          }}
+                          value={gejalaInfo}
+                          type="checkbox"
+                          className="checkbox checkbox-primary"
+                          />
+                    </td>
+                  </tr>
+                ))}
                 </tbody>
               </table>
             </div>

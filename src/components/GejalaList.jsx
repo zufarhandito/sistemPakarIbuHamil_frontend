@@ -7,6 +7,7 @@ const GejalaList = () => {
     const [name,setName] = useState("");
     const [gejala,setGejala] = useState([]);
     const [message,setMessage] = useState("");
+    const [filter,setFilter] = useState("")
     const navigate = useNavigate();
     const [status, setStatus] = useState("");
     const {id} = useParams();
@@ -65,6 +66,14 @@ const GejalaList = () => {
         <div className="divider divider-horizontal"></div>
         <div className="lg:w-1/2 shadow-md p-7 rounded-box max-h-screen overflow-y-auto">
             <div className="btn btn-primary w-full my-5">Daftar Gejala</div>
+                <div className="form-control justify-center">
+                    <div className="input-group">
+                        <input type="text" placeholder="Search…" onChange={(e)=>setFilter(e.target.value)} className="input input-bordered w-full mb-5" />
+                        <button className="btn btn-square">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                        </button>
+                    </div>
+                </div>
             <table className="table w-full overflow-y-auto">
                 {/* <!-- head --> */}
                 <thead>
@@ -76,7 +85,7 @@ const GejalaList = () => {
                 </thead>
                 <tbody>
                 {/* <!-- row 1 --> */}
-                {gejala.map((a,b)=>(
+                {gejala.filter(gejala=>gejala.name.toLowerCase().includes(filter)).map((a,b)=>(
                     <tr key={a.uuid}>
                         <td>
                         <div className="flex items-center space-x-3">
